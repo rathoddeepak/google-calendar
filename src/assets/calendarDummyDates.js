@@ -2,162 +2,162 @@ const days = [
 	 {
 	 	weekDay : 'S',
 	 	day : 1,
-	 	data : {}
+	 	data : [],
 	 },
 	 {
 	 	weekDay : 'S',
 	 	day : 2,
-	 	data : {}
+	 	data : [],
 	 },
 	 {
 	 	weekDay : 'M',
 	 	day : 3,
-	 	data : {}
+	 	data : [],
 	 },
 	 {
 	 	weekDay : 'T',
 	 	day : 4,
-	 	data : {}
+	 	data : [],
 	 },
 	 {
 	 	weekDay : 'W',
 	 	day : 5,
-	 	data : {}
+	 	data : [],
 	 },
 	 {
 	 	weekDay : 'T',
 	 	day : 6,
-	 	data : {}
+	 	data : [],
 	 },
 	 {
 	 	weekDay : 'F',
 	 	day : 7,
-	 	data : {}
+	 	data : [],
 	 },
 
 	 
 	 {
 	 	weekDay : 'S',
 	 	day : 8,
-	 	data : {}
+	 	data : [],
 	 },
 	 {
 	 	weekDay : 'S',
 	 	day : 9,
-	 	data : {}
+	 	data : [],
 	 },
 	 {
 	 	weekDay : 'M',
 	 	day : 10,
-	 	data : {}
+	 	data : [],
 	 },
 	 {
 	 	weekDay : 'T',
 	 	day : 11,
-	 	data : {}
+	 	data : [],
 	 },
 	 {
 	 	weekDay : 'W',
 	 	day : 12,
-	 	data : {}
+	 	data : [],
 	 },
 	 {
 	 	weekDay : 'T',
 	 	day : 13,
-	 	data : {}
+	 	data : [],
 	 },
 	 {
 	 	weekDay : 'F',
 	 	day : 14,
-	 	data : {}
+	 	data : [],
 	 },
 
 	 {
 	 	weekDay : 'S',
 	 	day : 15,
-	 	data : {}
+	 	data : [],
 	 },
 	 {
 	 	weekDay : 'S',
 	 	day : 16,
-	 	data : {}
+	 	data : [],
 	 },
 	 {
 	 	weekDay : 'M',
 	 	day : 17,
-	 	data : {}
+	 	data : [],
 	 },
 	 {
 	 	weekDay : 'T',
 	 	day : 18,
-	 	data : {}
+	 	data : [],
 	 },
 	 {
 	 	weekDay : 'W',
 	 	day : 19,
-	 	data : {}
+	 	data : [],
 	 },
 	 {
 	 	weekDay : 'T',
 	 	day : 20,
-	 	data : {}
+	 	data : [],
 	 },
 	 {
 	 	weekDay : 'F',
 	 	day : 21,
-	 	data : {}
+	 	data : [],
 	 },
 
 	 {
 	 	weekDay : 'S',
 	 	day : 22,
-	 	data : {}
+	 	data : [],
 	 },
 	 {
 	 	weekDay : 'S',
 	 	day : 23,
-	 	data : {}
+	 	data : [],
 	 },
 	 {
 	 	weekDay : 'M',
 	 	day : 24,
-	 	data : {}
+	 	data : [],
 	 },
 	 {
 	 	weekDay : 'T',
 	 	day : 25,
-	 	data : {}
+	 	data : [],
 	 },
 	 {
 	 	weekDay : 'W',
 	 	day : 26,
-	 	data : {}
+	 	data : [],
 	 },
 	 {
 	 	weekDay : 'T',
 	 	day : 27,
-	 	data : {}
+	 	data : [],
 	 },
 	 {
 	 	weekDay : 'F',
 	 	day : 28,
-	 	data : {}
+	 	data : [],
 	 },
 
 	 {
 	 	weekDay : 'S',
 	 	day : 29,
-	 	data : {}
+	 	data : [],
 	 },
 	 {
 	 	weekDay : 'S',
 	 	day : 30,
-	 	data : {}
+	 	data : [],
 	 },
 	 {
 	 	weekDay : 'M',
 	 	day : 31,
-	 	data : {}
+	 	data : [],
 	 },
 ]
 

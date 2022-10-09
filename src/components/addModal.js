@@ -92,7 +92,7 @@ export default class AddModal extends Component {
 		const dateToAddTxt = utils.getDate(dateToAdd);
 		const added = taskIndex != -1;
 		return (
-			<Modal transparent onRequestClose={this.close} visible={v} animationType="fade"> 
+			<Modal transparent onRequestClose={this.close} visible={v} animationType="slide"> 
 			 <TouchableOpacity activeOpacity={1} style={s.main} onPress={this.close}>
 			  <TouchableOpacity activeOpacity={1} style={s.content}>
 			   <Text style={s.title}>{added ? 'Update' : 'Create'} Task | {dateToAddTxt}</Text>
@@ -199,7 +199,7 @@ export default class AddModal extends Component {
 		if(startTime.getTime() > endTime.getTime()){
 			alert("Start Time can't greater than end time");
 			return
-		}else if(name?.length == 0){
+		}else if(name == undefined || name?.length == 0){
 			alert("Name is required");
 			return
 		}
@@ -290,16 +290,17 @@ const s = {
   		right : -10
   	},
   	main : {
-  		backgroundColor : '#000000b4',
-  		justifyContent : 'center',
+  		backgroundColor : '#00000024',
+  		justifyContent : 'flex-end',
   		alignItems : 'center',
   		height : '100%',
   		width : '100%'
   	},
   	content : {
-  		width : '95%',
+  		width : '100%',
   		backgroundColor : theme.bgColor,
-  		borderRadius : 10,
+  		borderTopLeftRadius : 10,
+  		borderTopRightRadius : 10,
   		padding : 10
   	},
   	title : {

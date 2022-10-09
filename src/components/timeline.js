@@ -1,41 +1,51 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {
   View,
   Text,
-  Dimensions,
   ScrollView,
-  TouchableOpacity
+  TouchableWithoutFeedback
 } from 'react-native';
 import hourList from 'assets/hourList';
 import theme from 'assets/theme';
-const {
-  width,
-  height
-} = Dimensions.get('window');
-export default class extends Component {
+
+export default class extends PureComponent {
 	constructor(props){
 		super(props)
 		this.state = {
 
 		};
 	}
-	render () {		
+	render () {
+		const {
+			data
+		} = this.props;
 		return (
 		  <View style={s.main}>
 		   {hourList.map(this.renderHour)}
+		   {data.map(this.plotTask)}
 		  </View>
 		)
 	}
 	renderHour = (hour, index) => {
-		const {
-			data
-		} = this.props;
-		const tasks = data[`${hour.hr}`] || [];
 		return (
-			<TouchableOpacity activeOpacity={1} onPress={() => this.props?.addTask(hour)} style={s.hour} key={hour.txt}>
-			 {tasks.map((task, idx) => <Text onPress={() => this.props?.updateTask(task, idx)} key={task.name} style={s.task}>{task.name}</Text>)}
-			</TouchableOpacity>
+			<>
+			<TouchableWithoutFeedback onPress={() => this.props?.addTask(hour)}  key={hour.txt}><View style={s.hour}>
+			 
+			</View></TouchableWithoutFeedback>			
+			</>
 		)
+	}
+
+	plotTask = (task, idx) => {
+		const {height, translateY} = calculateData(task);
+		return <Text onPress={() => this.props?.updateTask(task, idx)} key={task.name} style={[s.task, {
+			height,
+			transform : [
+			 {
+			 	translateY
+			 }
+			]
+		}]}>{task.name}</Text>
 	}
 }
 
@@ -52,12 +62,31 @@ const s = {
   	color : theme.bgColor,
   	textAlign : 'center',
   	borderRadius : 5,
-  	marginBottom : 2,
-  	padding : 5,
+  	position : 'absolute',
+  	width : 60,
+  	zIndex : 20,
   	backgroundColor : theme.primary
   },
   main : {
     width : 60,
     backgroundColor : theme.bgColor
   },
+}
+
+const calculateData = (task) => {
+	const hrDiff = task.endHr - task.startHr;
+	if (hrDiff > 0){
+		height = hrDiff * 40;
+	}else{
+		height = 15
+	}
+
+	let pos = (task.startHr - 1) * 40;
+	let topExtra = task.startMin * (40/60)
+	let translateY = pos + topExtra;
+
+	let bottomExtra = task.endMin * (40/60);
+
+	height = height + (bottomExtra - topExtra);
+	return {height, translateY}
 }

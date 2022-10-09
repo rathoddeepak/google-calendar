@@ -15,7 +15,7 @@ import theme from 'assets/theme';
 import calendarDummyDates from 'assets/calendarDummyDates';
 import AddModal from 'components/addModal';
 import DateTimePicker from '@react-native-community/datetimepicker';
-
+import { Calendar } from 'react-native-big-calendar'
 const thisMonthStamp = 1664627943;
 const {
   width,
@@ -75,16 +75,16 @@ export default class extends Component {
 			/>
 		   </View>		   
 
-			<ScrollView nestedScrollEnabled><View style={{flexDirection : 'row', flex : 1}}>
+			<ScrollView nestedScrollEnabled><View style={{flexDirection : 'row', flex : 1, marginTop : 10}}>
 			
 			<View style={s.timeList.main}>
 			{hourList.map(this.renderHour)} 
 			</View>
 
 			<View style={{flex : 1}}><FlatList
-		     horizontal
-		     nestedScrollEnabled		     
+		     horizontal		     		    
 			 data={days}
+			 ref={ref => this.timeLineContent = ref}
 			 onScroll={this.onTimeLineScroll}
 			 contentContainerStyle={{height : timelineHeight}}
 	         renderItem={this.renderTimelineContent}
@@ -188,9 +188,9 @@ export default class extends Component {
 	}
 
 	handleAdd = () => {
-		this.setState({
-			pickDate : true
-		})
+			this.setState({
+				pickDate : true
+			})
 	}
 
 	handleSelectDate = ({type, nativeEvent}) => {
@@ -236,31 +236,19 @@ export default class extends Component {
 			description
 		};
 		if(taskIndex != -1){
-			let currentTasks = day.data[`${startHr}`];
-			if(currentTasks == undefined){
-				alert('Something went wrong')
-				return
-			}
-			let currentTask = currentTasks[taskIndex];
-			if(currentTask == undefined){
-				alert('Something went wrong')
-				return
-			}
-
-			if(currentTask.startHr == startHr){
-				day.data[`${startHr}`][taskIndex] = updated;
-			}else{
-				day.data[currentTask.startHr].splice(taskIndex, 1);
-				day.data[`${startHr}`].push(updated);
-			}
+			if(day?.data[taskIndex] != undefined){
+				day.data[taskIndex] = updated;
+			}			
 		}else{
-			if(day?.data[`${startHr}`] == undefined){
-				day.data[`${startHr}`] = []
+			if(day?.data == undefined){
+				day.data = []
 			}
-			day.data[`${startHr}`].push(updated)
+			day.data.push(updated)
 		}
 		days[index] = day;
-		this.setState({days})
+		this.setState({days}, () => {
+			this.timeLineContent.scrollToIndex({index, animated : false})
+		})
 	}
 }
 const s = {
@@ -283,7 +271,6 @@ const s = {
 	  	width : 55,
   	},
   	item : {
-  		justifyContent : 'flex-end',
   		height : 40,
   		alignItems : 'center'
   	},
